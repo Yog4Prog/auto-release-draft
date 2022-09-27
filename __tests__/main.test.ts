@@ -3,7 +3,22 @@ import * as process from 'process'
 import * as cp from 'child_process'
 import * as path from 'path'
 import {expect, test} from '@jest/globals'
+import * as core from '@actions/core'
+import { runInContext } from 'vm'
+import { run } from '../src/main'
 
+jest.mock('@actions/core')
+
+describe('When running the action', () => {
+ const fakeSetOutput = core.setOutput as jest.MockedFunction<typeof core.setOutput>
+  test('it should set the release-url output parameter', async() => {
+    await run()
+    expect(fakeSetOutput).toHaveBeenCalledWith('release-url',expect.anything())
+  })
+
+})
+
+/*
 test('throws invalid number', async () => {
   const input = parseInt('foo', 10)
   await expect(wait(input)).rejects.toThrow('milliseconds not a number')
@@ -26,4 +41,4 @@ test('test runs', () => {
     env: process.env
   }
   console.log(cp.execFileSync(np, [ip], options).toString())
-})
+})*/
