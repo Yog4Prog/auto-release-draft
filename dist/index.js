@@ -45,7 +45,7 @@ function run() {
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
             core.debug(new Date().toTimeString());
-            core.setOutput('time', new Date().toTimeString());
+            core.setOutput('release-url', new Date().toTimeString());
         }
         catch (error) {
             if (error instanceof Error)
