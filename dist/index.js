@@ -45,7 +45,7 @@ function run() {
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
             core.debug(new Date().toTimeString());
-            core.setOutput('release-url', new Date().toTimeString());
+            core.setOutput('release-url', 'http:\\github.examples.gitactions');
         }
         catch (error) {
             if (error instanceof Error)
